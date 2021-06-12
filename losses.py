@@ -135,6 +135,11 @@ class HyLoss(nn.Module):
         return loss, pos_mean, neg_std
 
 class CorrelationPenaltyRegulation(nn.Module):
+    '''
+    CPR from 'L2-net: Deep learning of discriminative patch descriptor in 
+    euclidean space' (https://openaccess.thecvf.com/content_cvpr_2017/htm
+    l/Tian_L2-Net_Deep_Learning_CVPR_2017_paper.html)
+    '''
     def __init__(self,dim,GPU=True):
         super(CorrelationPenaltyRegulation, self).__init__()
         if GPU:
@@ -156,6 +161,11 @@ class CorrelationPenaltyRegulation(nn.Module):
 
 
 class GlobalOrthogonalRegularization(nn.Module):
+    '''
+    GOR from 'Learning spread-out local feature descriptors'(https
+    ://openaccess.thecvf.com/content_iccv_2017/html/Zhang_Learni
+    ng_Spread-Out_Local_ICCV_2017_paper.html)
+    '''
     def __init__(self):
         super(GlobalOrthogonalRegularization, self).__init__()
 
@@ -168,6 +178,12 @@ class GlobalOrthogonalRegularization(nn.Module):
 
 
 class SecondOrderSimiliarityRegulation(nn.Module):
+    '''
+    SOSR from 'SOSNet:Second Order Similarity Regularization for 
+    Local Descriptor Learning' (https://openaccess.thecvf.com/co
+    ntent_CVPR_2019/html/Tian_SOSNet_Second_Order_Similarity_Regu
+    larization_for_Local_Descriptor_Learning_CVPR_2019_paper.html)
+    '''
     def __init__(self, knn=8, bs=1024, GPU=True, sparse=False):
         super(SecondOrderSimiliarityRegulation, self).__init__()
         self.knn = knn
@@ -208,6 +224,12 @@ class SecondOrderSimiliarityRegulation(nn.Module):
         return SOSR
 
 class MagnitudeRegularization(nn.Module):
+    '''
+    HyNet main loss from 'HyNet: Learning Local Descriptor with Hybrid 
+    Similarity Measure and Triplet Loss' (https://github.com/yuruntian/
+    HyNet#hynet-learning-local-descriptor-with-hybrid-similarity-measur
+    e-and-triplet-loss)
+    '''
     def __init__(self):
         super(MagnitudeRegularization, self).__init__()
 
