@@ -1,12 +1,8 @@
-from pickle import FALSE
+
 import torch
-from torch import tensor
 import torch.nn as nn
 import torch.nn.functional as F
-import numpy as np
-from torch.nn import Parameter
 
-eps_l2_norm = 1e-10
 
 class FRN(nn.Module):
     def __init__(self, num_features, eps=1e-6, is_bias=True, is_scale=True, is_eps_leanable=False):
