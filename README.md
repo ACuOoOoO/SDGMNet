@@ -9,7 +9,7 @@ Coming soon.
 Pre-trained models and loggers on UBC PhotoTour can be found in [pretrained](pretrained).
 
 # Losses
-We implement several state-of-the-art [losses](losses.py) including [SOSNet](https://github.com/yuruntian/SOSNet) and [HyNet](https://github.com/yuruntian/HyNet#hynet-learning-local-descriptor-with-hybrid-similarity-measure-and-triplet-loss). Our noval loss will be released later.
+We implement several state-of-the-art [losses](losses.py) including [SOSNet](https://github.com/yuruntian/SOSNet) and [HyNet](https://github.com/yuruntian/HyNet#hynet-learning-local-descriptor-with-hybrid-similarity-measure-and-triplet-loss). Our novel loss will be released later.
 
 # Citation
 Please cite us if you use these models
