@@ -1,4 +1,3 @@
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -86,7 +85,7 @@ class SDGMNet(nn.Module):
     https://github.com/yuruntian/HyNet#hynet-learning-local-descriptor-with-hybrid-similarity-measure-and-triplet-loss).
     """
     def __init__(self, is_bias=True, is_bias_FRN=True, dim_desc=128, drop_rate=0.3):
-        super(HyNet, self).__init__()
+        super(SDGMNet, self).__init__()
         self.dim_desc = dim_desc
         self.drop_rate = drop_rate
 
@@ -140,5 +139,3 @@ class SDGMNet(nn.Module):
         feat_t = feat.view(-1, self.dim_desc)
         feat_norm = F.normalize(feat_t, dim=1)
         return feat_norm
-
-

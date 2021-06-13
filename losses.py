@@ -10,7 +10,7 @@ class hardloss(nn.Module):
     HardNet loss from 'Working hard to know your neighbor’s margins:
     Local descriptor learning loss'(https://github.com/DagnyT/hardnet).
     '''
-    def __init__(self, bs=1024, margin=1, GPU=True,loss_type='none'):
+    def __init__(self, bs=1024, margin=1, GPU=True):
         super(hardloss, self).__init__()
         self.bs = bs
         self.eps=1e-5
@@ -22,7 +22,6 @@ class hardloss(nn.Module):
         else:
             self.eye = torch.eye(bs)
             self.offdiagmask = (1-self.eye)
-        self.loss_type=loss_type
 
 
     def forward(self, anchor, positive, timestep=-1):
@@ -39,10 +38,8 @@ class hardloss(nn.Module):
             max_simi_matrix, simi_without_max_on_diag_a)
         max_simi_matrix = torch.max(
             max_simi_matrix, simi_without_max_on_diag_p)
-        mask = max_simi_matrix.ge(self.negthres).float()
-        #print(torch.sum(mask))
-        mask = mask.type_as(simi_without_max_on_diag_p)*10
-        max_simi_matrix = max_simi_matrix - 10*mask
+        mask = max_simi_matrix.ge(self.negthres)*10.0
+        max_simi_matrix = max_simi_matrix - mask
 
         neg = torch.max(max_simi_matrix, dim=1)[0]
         
@@ -110,10 +107,8 @@ class HyLoss(nn.Module):
             max_simi_matrix, simi_without_max_on_diag_a)
         max_simi_matrix = torch.max(
             max_simi_matrix, simi_without_max_on_diag_p)
-        mask = max_simi_matrix.ge(self.negthres).float()
-        #print(torch.sum(mask))
-        mask = mask.type_as(simi_without_max_on_diag_p)*10
-        max_simi_matrix = max_simi_matrix - 10*mask
+        mask = max_simi_matrix.ge(self.negthres)*10.0
+        max_simi_matrix = max_simi_matrix - mask
 
         neg_simi = torch.max(max_simi_matrix, dim=1)[0]
         pos_simi = torch.diag(simi_matrix)
@@ -224,12 +219,6 @@ class SecondOrderSimiliarityRegulation(nn.Module):
         return SOSR
 
 class MagnitudeRegularization(nn.Module):
-    '''
-    HyNet main loss from 'HyNet: Learning Local Descriptor with Hybrid 
-    Similarity Measure and Triplet Loss' (https://github.com/yuruntian/
-    HyNet#hynet-learning-local-descriptor-with-hybrid-similarity-measur
-    e-and-triplet-loss)
-    '''
     def __init__(self):
         super(MagnitudeRegularization, self).__init__()
 
