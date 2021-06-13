@@ -219,6 +219,12 @@ class SecondOrderSimiliarityRegulation(nn.Module):
         return SOSR
 
 class MagnitudeRegularization(nn.Module):
+    '''
+    HyNet regularization from 'HyNet: Learning Local Descriptor with Hybrid 
+    Similarity Measure and Triplet Loss' (https://github.com/yuruntian/
+    HyNet#hynet-learning-local-descriptor-with-hybrid-similarity-measur
+    e-and-triplet-loss)
+    '''
     def __init__(self):
         super(MagnitudeRegularization, self).__init__()
 
