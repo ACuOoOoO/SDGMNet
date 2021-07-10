@@ -200,7 +200,7 @@ class SecondOrderSimiliarityRegulation(nn.Module):
             indx_PP = torch.topk(PP_DisMat, self.knn, dim=0)[1]
             self.mask = self.mask*0+1e-8
             self.mask = self.mask.scatter_(0,indx_AA,1)
-            self.mask = self.mask.scatter_(0,indx_PP,0)
+            self.mask = self.mask.scatter_(0,indx_PP,1)
             if self.sparse:
                 knnind = torch.where(self.mask > 0.5)
                 knnind_reshape = torch.cat(
