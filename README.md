@@ -9,7 +9,7 @@ python train.py --datadir='./UBC'
 
 # Results on Image Matching Challenge
 
-![image](Results on IMC.png)
+![image](https://github.com/ACuOoOoO/SDGMNet/blob/master/Results%20on%20IMC.png)
 # Pre-trained models
 Pre-trained models and loggers on UBC PhotoTour can be found in [pretrained](pretrained). State-of-the-art models trained on Liberty for Image matching challenge can be found in [pretrained/models/HPM0.2 PHM0.2](pretrained/models/HPM0.2).
 
