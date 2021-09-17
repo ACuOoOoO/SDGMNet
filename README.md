@@ -3,9 +3,9 @@ SDGMNet models in Pytorch for paper ["SDGMNet: Statistic-based Dynamic Gradient
 Modulation for Local Descriptor Learning"](https://arxiv.org/abs/2106.04434).
 
 # Training Code
-'''
+```
 python train.py --datadir='./UBC'
-'''
+```
 
 # Results on Image Matching Challenge
 
